@@ -14,7 +14,7 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Akan menghasilkan kolom 'id' dengan auto-increment
             $table->string('nama_customer', 150);
             $table->text('alamat');
             $table->enum('jenis_kelamin', ['L', 'P']);
@@ -31,4 +31,4 @@ class CreateCustomersTable extends Migration
     {
         Schema::dropIfExists('customers');
     }
-}
+};

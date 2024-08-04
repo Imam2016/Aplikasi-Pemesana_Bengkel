@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customers;
 use Illuminate\Http\Request;
-use App\Models\Customers; 
 
 class CustomersController extends Controller
 {
@@ -23,13 +23,13 @@ class CustomersController extends Controller
         $request->validate([
             'nama_customer' => 'required',
             'alamat' => 'required',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required',
         ]);
 
         Customers::create($request->all());
 
         return redirect()->route('customers.index')
-            ->with('success', 'Customer berhasil ditambahkan.');
+                         ->with('success', 'Customer berhasil dibuat.');
     }
 
     public function show($id)
@@ -39,32 +39,32 @@ class CustomersController extends Controller
     }
 
     public function edit($id)
-{
-    $customer = Customers::findOrFail($id);
-    return view('customers.edit', compact('customer'));
-}
+    {
+        $customer = Customers::findOrFail($id);
+        return view('customers.edit', compact('customer'));
+    }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'nama_customer' => 'required',
             'alamat' => 'required',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required',
         ]);
 
-        $customers = Customers::findOrFail($id);
-        $customers->update($request->all());
+        $customer = Customers::findOrFail($id);
+        $customer->update($request->all());
 
         return redirect()->route('customers.index')
-            ->with('success', 'Customer berhasil diperbarui.');
+                         ->with('success', 'Customer berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        $customers = Customers::findOrFail($id);
-        $customers->delete();
+        $customer = Customers::findOrFail($id);
+        $customer->delete();
 
         return redirect()->route('customers.index')
-            ->with('success', 'Customer berhasil dihapus.');
+                         ->with('success', 'Customer berhasil dihapus.');
     }
 }

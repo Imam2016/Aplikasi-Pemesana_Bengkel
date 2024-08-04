@@ -34,19 +34,31 @@ class PegawaiController extends Controller
             ->with('success', 'Pegawai berhasil ditambahkan.');
     }
 
-    public function show($id)
+    public function show($id_pegawai)
     {
-        $pegawai = Pegawai::find($id);
+        $pegawai = Pegawai::find($id_pegawai);
+        
+        if (!$pegawai) {
+            return redirect()->route('pegawai.index')
+                ->with('error', 'Pegawai tidak ditemukan.');
+        }
+        
         return view('pegawai.show', compact('pegawai'));
     }
 
-    public function edit($id)
+    public function edit($id_pegawai)
     {
-        $pegawai = Pegawai::find($id);
+        $pegawai = Pegawai::find($id_pegawai);
+        
+        if (!$pegawai) {
+            return redirect()->route('pegawai.index')
+                ->with('error', 'Pegawai tidak ditemukan.');
+        }
+        
         return view('pegawai.edit', compact('pegawai'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_pegawai)
     {
         $request->validate([
             'nama_pegawai' => 'required',
@@ -56,16 +68,30 @@ class PegawaiController extends Controller
             'status' => 'required',
         ]);
 
-        $pegawai = Pegawai::find($id);
+        $pegawai = Pegawai::find($id_pegawai);
+
+        if (!$pegawai) {
+            return redirect()->route('pegawai.index')
+                ->with('error', 'Pegawai tidak ditemukan.');
+        }
+
         $pegawai->update($request->all());
 
         return redirect()->route('pegawai.index')
             ->with('success', 'Pegawai berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy($id_pegawai)
     {
-        Pegawai::find($id)->delete();
+        $pegawai = Pegawai::find($id_pegawai);
+
+        if (!$pegawai) {
+            return redirect()->route('pegawai.index')
+                ->with('error', 'Pegawai tidak ditemukan.');
+        }
+
+        $pegawai->delete();
+
         return redirect()->route('pegawai.index')
             ->with('success', 'Pegawai berhasil dihapus.');
     }

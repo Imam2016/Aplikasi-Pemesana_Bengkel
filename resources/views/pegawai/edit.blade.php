@@ -20,11 +20,11 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="nama_pegawai" class="form-label">Nama Pegawai</label>
-                                <input type="text" class="form-control" id="nama_pegawai" name="nama_pegawai" value="{{ $pegawai->nama_pegawai }}" required>
+                                <input type="text" class="form-control" id="nama_pegawai" name="nama_pegawai" value="{{ old('nama_pegawai', $pegawai->nama_pegawai) }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" rows="3" required>{{ $pegawai->alamat }}</textarea>
+                                <textarea class="form-control" id="alamat" name="alamat" rows="3" required>{{ old('alamat', $pegawai->alamat) }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>

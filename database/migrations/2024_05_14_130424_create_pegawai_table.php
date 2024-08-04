@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pegawai', function (Blueprint $table) {
-            $table->id();
+            $table->id('id'); // Pastikan ini adalah kolom primary key
             $table->string('nama_pegawai', 150);
             $table->text('alamat');
             $table->enum('jenis_kelamin', ['L', 'P']);

@@ -10,13 +10,15 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3 class="text-center my-4">Data Pegawai</h3>
-                    <hr>
                 </div>
+                <hr>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
+                        <!-- Tombol Tambah Pegawai -->
                         <a href="{{ route('pegawai.create') }}" class="btn btn-md btn-primary mb-3">Tambah Pegawai</a>
+                        <!-- Tabel Data Pegawai -->
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -51,6 +53,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-4 text-start">
+                            <a href="{{ route('customers.index') }}" class="btn btn-sm btn-secondary mb-3">Ke Halaman Customer</a>
+                        </div>
                     </div>
                 </div>
             </div>

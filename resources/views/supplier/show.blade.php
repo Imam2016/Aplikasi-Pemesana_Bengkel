@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Detail</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Detail Supplier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .container {
             max-width: 600px;
@@ -34,14 +34,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Customer Detail</h1>
+        <h1>Detail Supplier</h1>
         <div class="card">
-            <p><strong>ID:</strong> {{ $customer->id }}</p>
-            <p><strong>Nama:</strong> {{ $customer->nama_customer }}</p>
-            <p><strong>Alamat:</strong> {{ $customer->alamat }}</p>
-            <p><strong>Jenis Kelamin:</strong> {{ $customer->jenis_kelamin }}</p>
+            <p><strong>ID Supplier:</strong> {{ $supplier->id }}</p>
+            <p><strong>Nama Supplier:</strong> {{ $supplier->nama_supplier }}</p>
+            <p><strong>Alamat:</strong> {{ $supplier->alamat }}</p>
+            <p><strong>No HP:</strong> {{ $supplier->no_hp }}</p>
+            <p><strong>ID Barang:</strong> {{ $supplier->id_barang }}</p>
         </div>
-        <a href="{{ route('customers.index') }}" class="btn btn-secondary btn-back">Back to List</a>
+        <a href="{{ route('supplier.index') }}" class="btn btn-secondary btn-back">Kembali ke Daftar</a>
     </div>
 </body>
 </html>

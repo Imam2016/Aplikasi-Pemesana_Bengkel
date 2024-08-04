@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,11 @@
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('customers.create') }}" class="btn btn-md btn-primary mb-3">Tambah Customer</a>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -25,8 +29,6 @@
                                     <th scope="col">Nama Customer</th>
                                     <th scope="col">Alamat</th>
                                     <th scope="col">Jenis Kelamin</th>
-                                    <th scope="col">Tanggal Dibuat</th>
-                                    <th scope="col">Tanggal Diperbarui</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -37,12 +39,10 @@
                                         <td>{{ $customer->nama_customer }}</td>
                                         <td>{{ $customer->alamat }}</td>
                                         <td>{{ $customer->jenis_kelamin }}</td>
-                                        <td>{{ $customer->created_at }}</td>
-                                        <td>{{ $customer->updated_at }}</td>
                                         <td>
-                                            <a href="{{ route('customers.show', $customer->customer_id) }}" class="btn btn-sm btn-info">Lihat</a>
-                                            <a href="{{ route('customers.edit', $customer->customer_id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                            <form action="{{ route('customers.destroy', $customer->customer_id) }}" method="POST" style="display: inline;">
+                                            <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-sm btn-info">Lihat</a>
+                                            <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                            <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus customer ini?')">Hapus</button>
@@ -59,4 +59,3 @@
     </div>
 </body>
 </html>
-
